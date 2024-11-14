@@ -1,0 +1,38 @@
+{% set versions = {
+    "1.2": "f17c2d985fd4e4ce36cede945450416d3fa940af68945c91fa5d3ca1d76d4b49"
+} %}
+
+{% set version = environ.get('COMMIT_VERSION', None) %}
+{% set version = version or versions.keys()|first %}
+{% set version = version|string %}
+
+package:
+  name: {{ environ.get('ANACONDA_PACKAGE', "chaplin")|string|lower }}
+  version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
+
+source:
+  url: "https://chaplin.hepforge.org/code/chaplin-{{ version }}.tar"
+  {% if versions.get(version, None) %}
+  sha256: {{ versions.get(version) }}
+  {% endif %}
+
+requirements:
+  build:
+    - {{ compiler('gfortran') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+
+    - autoconf
+    - automake
+    - make
+
+about:
+  home: "https://chaplin.hepforge.org"
+  license: "GPL-3.0"
+  summary: "CHAPLIN - Complex Harmonic Polylogarithms in FORTRAN"
+  description: |
+    The FORTRAN library CHAPLIN enables you to numerically evaluate Harmonic polylogarithms up to weight 4 for any complex argument. It is presented in arXiv:1106.5739.
+
+extra:
+  recipe-maintainers:
+    - meiyasan
