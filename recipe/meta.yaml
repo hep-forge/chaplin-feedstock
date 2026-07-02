@@ -25,6 +25,7 @@ requirements:
     - autoconf
     - automake
     - make
+    - gnuconfig
 
 about:
   home: "https://chaplin.hepforge.org"
