@@ -16,7 +16,7 @@ CHAPLIN - Complex Harmonic Polylogarithms in FORTRAN
 | Architecture | Latest published |
 |--------------|------------------|
 | linux-amd64 (`linux-64`) | ✅ `1.2` |
-| linux-arm64 (`linux-aarch64`) | ❌ not published |
+| linux-arm64 (`linux-aarch64`) | ✅ `1.2` |
 
 _As of the last feedstock render; the badges above are live._
 
